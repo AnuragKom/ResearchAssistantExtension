@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Research Assistant</title>
-    <link rel="stylesheet" href="sidepanel.css">
+  <meta charset="UTF-8">
+  <title>Research Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="sidepanel.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h2>Research Assistant</h2>
-        </div>
+  <div class="container">
+    <header class="header">
+      <h1>Research Assistant</h1>
+    </header>
 
-        <div class="actions">
-            <button id="summarizeBtn">Summarize</button>
-        </div>
+    <section class="instruction-card">
+        <h2>How to Use</h2>
+        <p>Select any text from the webpage that you want summarized.</p>
+        <p>Then, click the <strong>“Summarize Selection”</strong> button below to generate a concise summary instantly.</p>
+    </section>
 
-        <div class="notes">
-            <h3>Research Notes</h3>
-            <textarea id="notes" placeholder="Take notes here"></textarea>
-            <button id="saveNotesBtn">Save Notes</button>
-        </div>
+    <section class="actions">
+      <button id="summarizeBtn" class="glow-on-hover">Summarize Selection</button>
+    </section>
 
-        <div id="results"></div>
-    </div>
-    <script src="sidepanel.js"></script>
+    <section class="notes-card">
+      <h2>Research Notes <i class="fa-regular fa-pen-to-square"></i></h2>
+      <textarea id="notes" placeholder="Take quick notes here..."></textarea>
+      <button id="saveNotesBtn" class="glow-on-hover">Save Notes</button>
+    </section>
+
+    <section class="results-card">
+      <h2>Summaries</h2>
+      <div id="results"></div>
+    </section>
+  </div>
+
+  <script src="sidepanel.js"></script>
 </body>
 </html>

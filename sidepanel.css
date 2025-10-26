@@ -1,70 +1,262 @@
+/* ---- Base Layout ---- */
 body {
-    margin: 0;
-    padding: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Rajdhani", sans-serif;
+  background: radial-gradient(circle at top right, #12121a 0%, #1b1b25 35%, #141426 70%, #0f0f18 100%);
+  color: #e6f5ff;
+  height: 100%;
+  overflow-y: auto;
+  letter-spacing: 0.4px;
 }
+
 
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 18px;
+  background: radial-gradient(circle at bottom left, #122233 0%, transparent 70%);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 255, 213, 0.1);
 }
 
+
+/* ---- Header ---- */
 .header {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 255, 213, 0.3);
+  background: transparent; /* removed blue gradient */
+  box-shadow: none; /* no shadow since container removed */
 }
 
-.header h2 {
-    margin: 0px;
-    color: #1a73e8;
+
+.header h1 {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 1.2px;
+  color: #00ffd5;
+  text-shadow: 0 0 8px rgba(0, 255, 213, 0.6);
 }
 
-.actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+
+.logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
-button {
-    padding: 8px 16px;
-    background-color: #1a73e8;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.notes-card h2 i {
+  color: #00ffd5;
+  margin-left: 8px;
+  font-size: 1rem;
+  vertical-align: middle;
 }
 
-button:hover {
-    background-color: #1557b0;
+/* ---- Instruction Section ---- */
+.instruction-card {
+  background: rgba(0, 255, 213, 0.03); /* lighter, less attention */
+  border: 1px solid rgba(0, 255, 213, 0.15);
+  border-radius: 10px;
+  padding: 10px 12px; /* smaller padding */
+  margin-top: 8px;
+  box-shadow: 0 2px 8px rgba(0, 255, 213, 0.05);
+  font-family: "Rajdhani", sans-serif;
+  color: #b8cad5;
+  backdrop-filter: blur(4px);
+  text-align: left;
+  line-height: 1.4;
+  animation: fadeIn 0.4s ease-in-out;
+  transition: all 0.3s ease;
 }
 
-.notes textarea {
-    width: 100%;
-    height: 200px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    resize: vertical;
-    margin-bottom: 10px;
+.instruction-card h2 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem; /* smaller */
+  color: #00ffd5;
+  margin-bottom: 4px;
+  text-shadow: none; /* reduced glow */
 }
 
+.instruction-card p {
+  margin: 2px 0;
+  font-size: 0.85rem; /* less prominent text */
+  opacity: 0.85; /* subtle visibility */
+}
+
+
+/* ---- Glow Button ---- */
+.glow-on-hover {
+  width: 100%;
+  height: 45px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  font-family: "Rajdhani", sans-serif; /* unified font style */
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase; /* consistent with futuristic style */
+  letter-spacing: 1px; /* improved readability for modern look */
+}
+
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00,
+    #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+/* ---- Notes + Results ---- */
+.notes-card {
+  padding: 16px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.notes-card,
+.results-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+}
+
+.notes-card h2,
+.results-card h2 {
+  color: #00ffd5;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+textarea {
+  width: 100%;
+  max-width: 100%;
+  height: 120px;
+  resize: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f0f0f0;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  box-sizing: border-box; /* keeps it inside container */
+  display: block;
+  overflow: auto;
+  transition: all 0.2s ease;
+}
+
+
+textarea:focus {
+  outline: none;
+  border-color: #00ffd5;
+  box-shadow: 0 0 8px #00ffd5;
+}
+
+/* ---- Result Cards ---- */
 #results {
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .result-item {
-    background: white;
-    padding: 15px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.5);
+  border-left: 4px solid #00ffd5;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .result-content {
-    margin-bottom: 10px;
-    line-height: 1.5;
+  line-height: 1.6;
+  color: #e0e0e0;
+  font-size: 0.95rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ffd5;
+  border-radius: 3px;
+}
+
+/* ---- Light mode support ---- */
+@media (prefers-color-scheme: light) {
+  body {
+    background: #f3f6fc;
+    color: #222;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a73e8, #4f8df7);
+  }
+  .notes-card,
+  .results-card {
+    background: white;
+    color: #111;
+  }
+  textarea {
+    background: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+  }
+  .result-item {
+    background: #f9f9f9;
+    border-left-color: #1a73e8;
+  }
 }
